@@ -1,0 +1,19 @@
+version: "3"
+services:
+    emp-demo:
+        container_name: employee-container
+        build:
+            context: ./
+            args:
+                JAR_FILE: target/employee-app-1.0.jar
+                PORT: 8080
+            dockerfile: Dockerfile
+        image: emp-repo/emp-demo:v1.0
+        ports:
+            - 8080:8080
+        networks:
+            - emp-network
+networks:
+
+    emp-network:
+        driver: bridge
